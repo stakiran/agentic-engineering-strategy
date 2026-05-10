@@ -33,3 +33,60 @@ Agentic Engineering Strategy とは、Agentic Engineering を実現するため�
 Agentic Engineering Strategy の目的は、この営みを志す同志に、参考とインスピレーションを与えることだ。
 
 ## このドキュメントの読み方
+**興味のある概念モデルを読み進めてもらいたい**。
+
+このドキュメントでは、概念モデルを n 点提示する。たとえば HASIO や OHAT といった名前がついており、HASIO は Harness/Agent/Skill/Input Context/Output Contract から成るし、OHAT は Orchestration/Harness/Agent/Tool から成る。つまり概念単位をいくつか定義した上で、それらの関係性を構築している。
+
+概念単位自体は、読者にとっても馴染みがあるはずだ。たとえば次のような単位はよく登場する:
+
+- Harness
+- Agent
+- Skill
+
+私は Agentinc Engineering の戦略とは、以下の二つをどのように設計するか、なのだと言えると思う:
+
+- 各概念単位の意味と責務
+- 各概念単位間の関係性
+
+その前提で、このドキュメントでは、これら二点を「戦略」と名付けて n 点提示する。
+
+## Agentic Engineering Strategy v0.1
+
+### HASIO
+- Harness
+    - Agent
+        - Skill
+            - Input Context
+            - Output Contract
+
+### HOAST
+- Harness
+    - Orchestration
+        - Agent
+            - Skill
+                - Tool
+
+### OHAST
+- Orchestration
+    - Harness
+        - Agent
+            - Skill
+                - Tool
+
+### OHAT
+- Orchestration
+    - Harness
+        - Agent
+            - Tool
+
+### HASK
+- Harness
+    - Agent
+        - Skill
+        - Knowledge
+
+### RHAS
+- Remuda
+    - Harness
+        - Agent
+            - Skill
