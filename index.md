@@ -32,32 +32,43 @@ Agentic Engineering Strategy とは、Agentic Engineering を実現するため�
 
 Agentic Engineering Strategy の目的は、この営みを志す同志に、参考とインスピレーションを与えることだ。
 
-## このドキュメントの読み方
-**興味のある概念モデルを読み進めてもらいたい**。
+## このドキュメントの意図と読み方
 
-このドキュメントでは、概念モデルを n 点提示する。たとえば HASIO や OHAT といった名前がついており、HASIO は Harness/Agent/Skill/Input Context/Output Contract から成るし、OHAT は Orchestration/Harness/Agent/Tool から成る。つまり概念単位をいくつか定義した上で、それらの関係性を構築している。
+### 興味のある概念モデルを読み進めてもらいたい！
+このドキュメントでは、概念モデルを n 点提示する。
 
+たとえば HASIO や OHAT といった名前がついており、HASIO は Harness/Agent/Skill/Input Context/Output Contract から成るし、OHAT は Orchestration/Harness/Agent/Tool から成る。つまり概念単位をいくつか定義した上で、それらの関係性を構築している。
+
+現時点で、どのモデルが正しい・正しくないといったことはわからない。むしろ、意思決定の問題だろう。
+
+**あなたは、あなたのチームは、製品は、どんな概念モデルをつくるべきか。また、なぜそうつくるのか。**
+
+この問いを抱き、歩み続けることこそが最重要なのだと思う。このドキュメントは良きヒントになるはずだ。
+
+### なぜ概念モデルか？
 概念単位自体は、読者にとっても馴染みがあるはずだ。たとえば次のような単位はよく登場する:
 
 - Harness
 - Agent
 - Skill
 
-私は Agentinc Engineering の戦略とは、以下の二つをどのように設計するか、なのだと言えると思う:
+私事だが、私は Agentic Engineering よりも野心的な取り組みをしている。FASD(Fully Autonomous Software Development) と名付けており、さらに 12 Factor Agents のノリで [12 Factor FASD(Fully Autonomous Software Development)](https://stakiran.github.io/12-factor-fasd/) も整理した。つまり私は Agentic Engineering も含め、実践はもちろん、研究をしている立場でもある。
 
-- 各概念単位の意味と責務
-- 各概念単位間の関係性
+私は次第に **Agentic Engineering においてもアーキテクチャが重要** と感じるようになった。というのも、単にエージェントを雑に使うだけでは、とても品質など確保できないし、何ができて何ができないかの計測および説明責任も果たせない。にもかかわらず、現時点では、各エンジニアは己の感性に委ねるか、ビジネスよろしく手数を増やすか、もしくはオープンソースのエージェント・ハーネスのフレームワークの試用とキャッチアップに明け暮れている。
 
-その前提で、このドキュメントでは、これら二点を「戦略」と名付けて n 点提示する。
+たぶん、逃げてはいけないのだ。優秀なマネージャーが信念をもって仕組みをつくるように、私たちも Agentic Engineer もそうせねばならない。アーキテクチャという言葉が便利だろう。アーキテクチャをつくる、と言えば通じやすい。では、Agentic Engineeirng におけるアーキテクチャとは？
+
+私は、まず必要なのは **「わかりやすさ」と「とっかかり」** だと考えた。そこで、シンプルに概念単位とその関係を考えることにした。これを概念モデルと呼んでおり、このドキュメントは概念モデルのカタログである。
+
+ちなみに、概念単位としては、すでによく知られたものを持ってきている。しかし多義語ではあるため、各モデルにて意味をしっかりと定義する。
+
+
+### 改めて、このドキュメントの読み方
+概念モデルを n 点提示している。
+
+好きに読んでほしい。その上で何らかの刺激やいんす
 
 ## Agentic Engineering Strategy v0.1
-
-### HASIO
-- Harness
-    - Agent
-        - Skill
-            - Input Context
-            - Output Contract
 
 ### HOAST
 - Harness
@@ -90,3 +101,10 @@ Agentic Engineering Strategy の目的は、この営みを志す同志に、参
     - Harness
         - Agent
             - Skill
+
+### HASIO
+- Harness
+    - Agent
+        - Skill
+            - Input Context
+            - Output Contract
