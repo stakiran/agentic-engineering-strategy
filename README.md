@@ -1,6 +1,6 @@
 # Agentic Engineering Strategy
 
-## [Website](GITHUB-PAGES-URL)
+## [Website](https://stakiran.github.io/agentic-engineering-strategy/)
 
 ## Github
 - [日本語](index.md)
