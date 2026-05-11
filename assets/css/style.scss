@@ -1,0 +1,19 @@
+---
+---
+@import "jekyll-theme-primer";
+
+/* 見出しを枠線で控えめに強調 */
+h1 {
+  background-color: #eeeeee;
+  border: 1px ridge #000000;
+  padding-left: 4px;
+}
+
+h2 {
+  border-left: 6px solid #000000;
+  padding-left: 4px;
+}
+
+h3 {
+  border-bottom: 1px dotted #000000;
+}
