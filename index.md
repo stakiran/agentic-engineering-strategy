@@ -1,9 +1,9 @@
 # Agentic Engineering Strategy
 [日本語](index.md) | [English](index_EN.md) | [GitHub](https://github.com/stakiran/agentic-engineering-strategy)
 
-## はじめに
+# はじめに
 
-### Agentic Engineering とは？
+## Agentic Engineering とは？
 2025 年に Vibe Coding を唱えた Andrej Karpathy が、2026 年版のあり方として唱えたもの。
 
 - <https://x.com/karpathy/status/2019137879310836075>
@@ -25,16 +25,16 @@ Agentic Engineering の特徴は、その名が示すとおり二点ある:
 
 わかりやすいのは Prompt Engineering だろう。この手の教科書や論文は多数存在する。Agentic Engineering も今後そうなっていくだろうが、 2026-05-10 現在は未整備である。
 
-### Agentic Engineering Strategy とは？
+## Agentic Engineering Strategy とは？
 本題に入ろう。
 
 Agentic Engineering Strategy とは、Agentic Engineering を実現するための **AI エージェントのアーキテクチャ案** を指す。パターンと呼ぶほどの具体性と有効性はなく、概念モデルのレベルで、このような概念と関係性を据えれば上手くいく（かもしれない）、という案を述べている。つまりは戦略である。あるいはアプローチと言っても良い。
 
 Agentic Engineering Strategy の目的は、この営みを志す同志に、参考とインスピレーションを与えることだ。
 
-## このドキュメントの意図と読み方
+# このドキュメントの意図と読み方
 
-### 興味のある概念モデルを読み進めてもらいたい！
+## 興味のある概念モデルを読み進めてもらいたい！
 このドキュメントでは、概念モデルを n 点提示する。
 
 たとえば HASIO や OHAT といった名前がついており、HASIO は Harness/Agent/Skill/Input Context/Output Contract から成るし、OHAT は Orchestration/Harness/Agent/Tool から成る。つまり概念単位をいくつか定義した上で、それらの関係性を構築している。
@@ -45,7 +45,7 @@ Agentic Engineering Strategy の目的は、この営みを志す同志に、参
 
 この問いを抱き、歩み続けることこそが最重要なのだと思う。このドキュメントは良きヒントになるはずだ。
 
-### なぜ概念モデルか？
+## なぜ概念モデルか？
 概念単位自体は、読者にとっても馴染みがあるはずだ。たとえば次のような単位はよく登場する:
 
 - Harness
@@ -62,9 +62,9 @@ Agentic Engineering Strategy の目的は、この営みを志す同志に、参
 
 ちなみに、概念単位としては、すでによく知られたものを持ってきている。しかし多義語ではあるため、各モデルにて意味をしっかりと定義する。
 
-## Agentic Engineering Strategy v0.1
+# Agentic Engineering Strategy v0.1
 
-### 用語
+## 用語
 - ガバナンス: ハーネスファイルによる全体制御、使用モデルの切り替え、消費コンテキストの監視など「すべての LLM 呼び出し」に絡む設定を制御すること
 - ガバナンス・パラメーター: ガバナンスに関する設定や指示のこと
 - ローカルコンテキスト: 自身のスコープ内で通用するコンテキスト。下位に渡すこともある
@@ -75,7 +75,7 @@ Agentic Engineering Strategy の目的は、この営みを志す同志に、参
 
 🐰タイムアウトや割り込みは？これも用語として入れるべき。割り込み、中断、介入……。まあ「割り込み」でいいんじゃない？
 
-### HOAST
+## HOAST
 - Harness
     - Orchestration
         - Agent
@@ -110,7 +110,7 @@ Agentic Engineering Strategy の目的は、この営みを志す同志に、参
 
 たとえるならハーネスが組織、オーケストレーションが監督、エージェントが作業員のようなもの。オーケストレーションもエージェントも一社員であり、組織の理には抗えない。
 
-### OHAST
+## OHAST
 - Orchestration
     - Harness
         - Agent
@@ -144,25 +144,25 @@ HOAST よりもエージェントの自律性が高い。たとえば自己判�
 
 懸念は **オーケストレーションの暴走** だ。ハーネスを被っていないため、無双地帯あるいは脆弱性になりやすい。そのためオーケストレーション自体は処理を担わず、できるだけエージェントに委ねるべき。しかしエージェントの監督者として最低限の制御は担うべき。この塩梅をいかにして実装するかが難しい。
 
-### OHAT
+## OHAT
 - Orchestration
     - Harness
         - Agent
             - Tool
 
-### HASK
+## HASK
 - Harness
     - Agent
         - Skill
         - Knowledge
 
-### RHAS
+## RHAS
 - Remuda
     - Harness
         - Agent
             - Skill
 
-### HASIO
+## HASIO
 - Harness
     - Agent
         - Skill
