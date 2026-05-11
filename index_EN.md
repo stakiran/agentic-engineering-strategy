@@ -1,9 +1,9 @@
 # Agentic Engineering Strategy
 [日本語](index.md) | [English](index_EN.md) | [GitHub](https://github.com/stakiran/agentic-engineering-strategy)
 
-## Introduction
+# Introduction
 
-### What is Agentic Engineering?
+## What is Agentic Engineering?
 A concept proposed by Andrej Karpathy — who advocated Vibe Coding in 2025 — as the 2026 version of how things should be.
 
 - <https://x.com/karpathy/status/2019137879310836075>
@@ -25,16 +25,16 @@ A manager does not move their own hands; they skillfully manage their subordinat
 
 A familiar example would be Prompt Engineering. There are many textbooks and papers on this topic. Agentic Engineering will likely follow suit, but as of 2026-05-10 it is still unorganized.
 
-### What is Agentic Engineering Strategy?
+## What is Agentic Engineering Strategy?
 Let us get to the main topic.
 
 Agentic Engineering Strategy refers to **proposed architectures for AI agents** that realize Agentic Engineering. It does not have the concreteness or effectiveness to be called a pattern; at the level of conceptual models, it presents proposals such as "if you place these concepts and relationships like this, things might go well." In other words, it is a strategy. Or you may call it an approach.
 
 The purpose of Agentic Engineering Strategy is to give reference and inspiration to fellow practitioners who aspire to this activity.
 
-## The Intent of This Document and How to Read It
+# The Intent of This Document and How to Read It
 
-### Please read through whichever conceptual models interest you!
+## Please read through whichever conceptual models interest you!
 This document presents n conceptual models.
 
 For example, they have names such as HASIO and OHAT — HASIO consists of Harness/Agent/Skill/Input Context/Output Contract, and OHAT consists of Orchestration/Harness/Agent/Tool. That is, after defining several conceptual units, it builds relationships among them.
@@ -45,7 +45,7 @@ At this point, we cannot say which model is right or wrong. Rather, it is a matt
 
 I believe what is most important is to hold onto this question and keep walking forward. This document should serve as a good hint.
 
-### Why Conceptual Models?
+## Why Conceptual Models?
 The conceptual units themselves should be familiar to readers. For example, units like the following appear frequently:
 
 - Harness
@@ -62,15 +62,21 @@ I thought what is needed first is **"clarity" and "an entry point."** So I decid
 
 By the way, as for the conceptual units, I have brought in ones that are already well known. However, since they are polysemous, I will firmly define their meanings within each model.
 
-## Agentic Engineering Strategy v0.1
+# Agentic Engineering Strategy v0.1
 
-### Terminology
-- Governance: controlling settings that apply to "every LLM call," such as overall control via the harness file, switching the model in use, and monitoring context consumption
-- Governance Parameters: settings and instructions related to governance
-- Local Context: context that is valid within one's own scope. It may also be passed down to subordinates
-- Global Context: of the contexts that **can be referenced** from every LLM call, the portion excluding governance
+## Terminology
+- (Harness-related)
+    - Governance: controlling settings that apply to "every LLM call," such as overall control via the harness file, switching the model in use, and monitoring context consumption
+    - Governance Parameters: settings and instructions related to governance
+- (Context-related)
+    - Local Context: context that is valid within one's own scope. It may also be passed down to subordinates
+    - Global Context: of the contexts that **can be referenced** from every LLM call, the portion excluding governance
+- (Workflow- and feedback-loop-related)
+    - Agentic Topology: a definition of how processing entities (≒ agents) flow in Agentic Engineering, or a graph thereof. Examples of related terminology are listed here: graph, network, chain, pipeline, feedback loop, DAG
+- (Interruption-related)
+    - Intervention: meaning "to intervene" — interrupting an LLM call or the processing of an agentic topology partway through. Examples include handling timeouts or exceptions. Note that conditional branches such as "break when a threshold is exceeded" are logic built into the agentic topology, and are not interventions
 
-### HOAST
+## HOAST
 - Harness
     - Orchestration
         - Agent
@@ -80,7 +86,7 @@ By the way, as for the conceptual units, I have brought in ones that are already
 Conceptual units:
 
 - Harness: bears the **governance** of orchestration and agents
-- Orchestration: handles how multiple agents are coordinated. Contains **local context**
+- Orchestration: handles how multiple agents are coordinated. Has **local context** and **agentic topology**
 - Agent: performs some job using multiple skills. Contains **local context**
 - Skill: processing packaged in a reusable form
 - Tool: handles part of a skill's processing. Deterministic. Closed within the skill
@@ -105,7 +111,7 @@ Notes:
 
 By way of analogy: the harness is like the organization, the orchestration is like a supervisor, and the agent is like a worker. Both the orchestration and the agent are employees, and cannot defy the organization's principles.
 
-### OHAST
+## OHAST
 - Orchestration
     - Harness
         - Agent
@@ -114,10 +120,10 @@ By way of analogy: the harness is like the organization, the orchestration is li
 
 Conceptual units:
 
-- Orchestration: handles how multiple harnesses are coordinated
-- Harness: wraps agents and bears overall control, including performance (capability, cost, quality)
-- Agent: performs some job using multiple skills. Contains prompts and context
-- Skill: processing packaged in a reusable form. Contains prompts
+- Orchestration: handles how multiple harnesses are coordinated. Has **local context** and **agentic topology**
+- Harness: wraps an agent and bears its **governance**
+- Agent: performs some job using multiple skills. Contains **local context**
+- Skill: processing packaged in a reusable form
 - Tool: handles part of a skill's processing. Deterministic. Closed within the skill
 
 Relationships:
@@ -139,25 +145,25 @@ Agents have higher autonomy than in HOAST. For example, they can burst processin
 
 The concern is **runaway orchestration**. Because it is not wrapped in a harness, it tends to become an unrestrained zone or a vulnerability. For that reason, orchestration itself should not perform processing and should delegate as much as possible to the agents. Still, as the supervisor of agents, it should bear at least minimum control. How to strike this balance in implementation is the hard part.
 
-### OHAT
+## OHAT
 - Orchestration
     - Harness
         - Agent
             - Tool
 
-### HASK
+## HASK
 - Harness
     - Agent
         - Skill
         - Knowledge
 
-### RHAS
+## RHAS
 - Remuda
     - Harness
         - Agent
             - Skill
 
-### HASIO
+## HASIO
 - Harness
     - Agent
         - Skill
