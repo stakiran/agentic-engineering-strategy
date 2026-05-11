@@ -54,7 +54,7 @@ The conceptual units themselves should be familiar to readers. For example, unit
 
 On a personal note, I am working on something even more ambitious than Agentic Engineering. I have named it FASD (Fully Autonomous Software Development), and in the spirit of 12 Factor Agents, I have also organized [12 Factor FASD (Fully Autonomous Software Development)](https://stakiran.github.io/12-factor-fasd/). In other words, including Agentic Engineering, I am in a position not only of practice but also of research.
 
-I have gradually come to feel that **architecture is also important in Agentic Engineering**. The reason is that simply using agents in a sloppy way cannot ensure quality, nor can we fulfill our accountability for measuring and explaining what is and is not possible. Despite this, at present, each engineer either entrusts things to their own intuition, increases moves the way business does, or spends their days trying out and catching up on open-source agent/harness frameworks.
+I have gradually come to feel that **architecture is also important in Agentic Engineering**. The reason is that simply using agents in a sloppy way cannot ensure quality, nor can we fulfill our accountability for measuring and explaining what is and is not possible. Despite this, at present, each engineer either entrusts things to their own intuition, multiplies their moves the way business does, or spends their days trying out and catching up on open-source agent/harness frameworks.
 
 Perhaps we must not run away. Just as a capable manager builds systems based on their convictions, we Agentic Engineers must do the same. The word "architecture" should be useful here. Saying "build an architecture" gets the message across easily. So then, what is architecture in Agentic Engineering?
 
@@ -64,6 +64,12 @@ By the way, as for the conceptual units, I have brought in ones that are already
 
 ## Agentic Engineering Strategy v0.1
 
+### Terminology
+- Governance: controlling settings that apply to "every LLM call," such as overall control via the harness file, switching the model in use, and monitoring context consumption
+- Governance Parameters: settings and instructions related to governance
+- Local Context: context that is valid within one's own scope. It may also be passed down to subordinates
+- Global Context: of the contexts that **can be referenced** from every LLM call, the portion excluding governance
+
 ### HOAST
 - Harness
     - Orchestration
@@ -71,12 +77,67 @@ By the way, as for the conceptual units, I have brought in ones that are already
             - Skill
                 - Tool
 
+Conceptual units:
+
+- Harness: bears the **governance** of orchestration and agents
+- Orchestration: handles how multiple agents are coordinated. Contains **local context**
+- Agent: performs some job using multiple skills. Contains **local context**
+- Skill: processing packaged in a reusable form
+- Tool: handles part of a skill's processing. Deterministic. Closed within the skill
+
+Relationships:
+
+- 1 Harness has n Orchestrations
+- 1 Orchestration has n Agents
+- 1 Agent references n Skills
+- 1 Skill has n Tools
+
+Notes:
+
+- AST is the golden pattern
+    - An agent is a clean, well-bounded unit that contains non-deterministic prompt-driven processing
+    - A skill is what is carved out as a reusable component, like a function or module
+    - A tool is a **deterministic** program or external call that does not rely on non-determinism
+        - For stability of results and performance, parts that can be implemented deterministically should be implemented that way
+        - Note that tools are not given reusability; they may be hard-coded into their owning skill. Even when you want to reuse one, duplicate it instead. This means tools are not regarded as architecture. There are two reasons: 1) we want to focus on Agentic Engineering; 2) tools can be created by the AI on a per-skill basis as needed
+- Orchestration does not carry governance, so engineers can focus on the logic of orchestration
+- On the other hand, since governance is controlled by the topmost harness, governance parameters must be propagated down to the agents
+
+By way of analogy: the harness is like the organization, the orchestration is like a supervisor, and the agent is like a worker. Both the orchestration and the agent are employees, and cannot defy the organization's principles.
+
 ### OHAST
 - Orchestration
     - Harness
         - Agent
             - Skill
                 - Tool
+
+Conceptual units:
+
+- Orchestration: handles how multiple harnesses are coordinated
+- Harness: wraps agents and bears overall control, including performance (capability, cost, quality)
+- Agent: performs some job using multiple skills. Contains prompts and context
+- Skill: processing packaged in a reusable form. Contains prompts
+- Tool: handles part of a skill's processing. Deterministic. Closed within the skill
+
+Relationships:
+
+- 1 Orchestration has n Harnesses
+- 1 Harness has 1 Agent
+- 1 Agent references n Skills
+- 1 Skill has n Tools
+
+Notes:
+
+- AST is the golden pattern
+    - (omitted)
+- Unlike HOAST, the harness wraps the agent
+    - Therefore governance parameters are held on a per-agent basis
+    - However, orchestration is not wrapped in a harness
+
+Agents have higher autonomy than in HOAST. For example, they can burst processing on their own judgment, putting pressure on cost or the context window. However, since orchestration exists, supervision is still possible.
+
+The concern is **runaway orchestration**. Because it is not wrapped in a harness, it tends to become an unrestrained zone or a vulnerability. For that reason, orchestration itself should not perform processing and should delegate as much as possible to the agents. Still, as the supervisor of agents, it should bear at least minimum control. How to strike this balance in implementation is the hard part.
 
 ### OHAT
 - Orchestration
