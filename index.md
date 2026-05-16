@@ -151,6 +151,17 @@ HOAST よりもエージェントの自律性が高い。たとえば自己判�
         - Agent
             - Tool
 
+依存:
+
+- OHAST
+
+補足:
+
+- OHAST からスキルを抜いたものである
+    - 背景: 共通処理を関数化・モジュール化するように、Agentinc Engineering でもスキルの形で共通化することが多い。実際に Claude Code Skills は（Agentinc Engineering における実装単位としても）広く使われている
+    - 問題: しかし、スキルの抽象性がオーバースペックになるケースもある
+    - OHAT ではスキルを廃止し、プロンプトはエージェントレベルで持たせる
+
 ## HASK
 - Harness
     - Agent

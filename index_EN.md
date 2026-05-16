@@ -151,6 +151,17 @@ The concern is **runaway orchestration**. Because it is not wrapped in a harness
         - Agent
             - Tool
 
+Dependencies:
+
+- OHAST
+
+Notes:
+
+- This is OHAST with skills removed
+    - Background: just as common processing is turned into functions or modules, in Agentic Engineering it is often shared in the form of skills. In fact, Claude Code Skills are widely used (also as an implementation unit in Agentic Engineering)
+    - Problem: however, there are cases where the abstraction of skills is overspec
+    - In OHAT, skills are abolished, and prompts are held at the agent level
+
 ## HASK
 - Harness
     - Agent
